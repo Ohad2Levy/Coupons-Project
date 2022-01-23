@@ -1,0 +1,19 @@
+services:
+  postgres:
+    container_name: CouponsPost
+    image: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
+    volumes:
+      - /Users/ohadl/ProgramFiles/IdeaProjects/CouponsProjectPostgresql:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
