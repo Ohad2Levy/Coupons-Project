@@ -22,6 +22,7 @@ steps:
   inputs:
     connection: 'ArtSaas'
     specSource: 'taskConfiguration'
+    threads: 1
     fileSpec: |
       {
         "files": [
