@@ -21,10 +21,10 @@ steps:
 - task: ArtifactoryDotnetCore@1
   inputs:
     command: 'restore'
-    artifactoryService: 'ArtSaas'
+    artifactoryService: 'ngrokArt'
     rootPath: 'MS.Database/MS.Database.sqlproj'
     noNuGetCache: true
-    targetResolveRepo: nuget
+    targetResolveRepo: prod-nuget
     packagesDirectory: 'packages'
     nugetProtocolVersion: 'v2'
     verbosityRestore: 'Detailed'
