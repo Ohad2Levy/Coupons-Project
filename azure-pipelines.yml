@@ -22,6 +22,17 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
+- task: ArtifactoryDotnetCore@1
+  inputs:
+    command: 'restore'
+    artifactoryService: 'ArtSaas'
+    rootPath: 'MS.Database/MS.Database.sqlproj'
+    noNuGetCache: true
+    targetResolveRepo: prod-nuget
+    packagesDirectory: 'packages'
+    nugetProtocolVersion: 'v2'
+    verbosityRestore: 'Detailed'
+
 
 - task: ArtifactoryGenericUpload@2
   inputs:
