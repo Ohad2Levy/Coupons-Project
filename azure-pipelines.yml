@@ -29,9 +29,9 @@ steps:
     nugetProtocolVersion: 'v2'
     verbosityRestore: 'Detailed'
 
-- task: ArtifactoryGenericDownload@3
+- task: ArtifactoryGenericUpload@2
   inputs:
-    connection: 'ngrokArt'
+    artifactoryService: 'ngrokArt'
     specSource: 'taskConfiguration'
     fileSpec: |
       {
