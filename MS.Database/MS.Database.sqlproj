@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="MSBuild.Sdk.SqlProj/1.17.3">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+     <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureDatabaseSchemaProvider</DSP>
+     </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Properties" />
+	  <Folder Include="\\**" />
+    <Folder Include="Functions\" />
+    <Folder Include="Stored Procedures\" />
+    <Folder Include="Tables\" />
+    <Folder Include="User Defined Types\" />
+    <Folder Include="Views\" />
+    <Folder Include="Stored Procedures\Build Action None\" />
+    <Folder Include="Migration Scripts\ReportingSprint11\" />
+    <Content Remove="**\*.sql" />
+  </ItemGroup>
+  <ItemGroup>
+   <None Include ="MS.Database.publish.xml"/>
+  </ItemGroup>
+   <ItemGroup>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\AzureV12\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\AzureV12\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>True</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+  </ItemGroup>  
+    <ItemGroup>
+    <!-- <None Include="Migration Scripts\**" />
+    <None Include="Migration Scripts/S33/3825.sql"/> -->
+    <!-- WILDCARDS -->
+    <Build Include="Functions\*" />
+    <Build Include="Stored Procedures\*" />
+    <Build Include="Tables\*" />
+    <Build Include="Triggers\*" />
+    <Build Include="User Defined Types\*" />
+    <None Include="Migration Scripts\**" /> 
+    <Build Include="Views\*" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="Script.PreDeployment.sql" />
+    <PostDeploy Include="Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="MS.Database.refactorlog" />
+  </ItemGroup>
+ <ItemGroup>
+    <ProjectReference Include="..\BeqomKernelDB\BeqomKernelDB.sqlproj">
+      <Name>BeqomKernelDB</Name>
+      <Project>{db83892b-75d0-46e2-a728-b85b0711a071}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+    </ProjectReference>
+  </ItemGroup> 
+</Project>
