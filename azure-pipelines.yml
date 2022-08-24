@@ -28,3 +28,18 @@ steps:
     packagesDirectory: 'packages'
     nugetProtocolVersion: 'v2'
     verbosityRestore: 'Detailed'
+
+- task: ArtifactoryGenericDownload@3
+  inputs:
+    connection: 'ngrokArt'
+    specSource: 'taskConfiguration'
+    fileSpec: |
+      {
+        "files": [
+          {
+            "pattern": "pom.xml",
+            "target": "prod-nuget"
+          }
+        ]
+      }
+    failNoOp: true
