@@ -33,3 +33,14 @@ steps:
         ]
       }
     failNoOp: true
+
+- task: ArtifactoryDotnetCore@1
+  inputs:
+    command: 'restore'
+    artifactoryService: 'ArtSaas'
+    rootPath: 'MS.Database/MS.Database.sqlproj'
+    noNuGetCache: true
+    targetResolveRepo: nuget
+    packagesDirectory: 'packages'
+    nugetProtocolVersion: 'v2'
+    verbosityRestore: 'Detailed'
