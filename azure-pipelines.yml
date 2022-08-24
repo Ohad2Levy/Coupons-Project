@@ -18,22 +18,6 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- task: ArtifactoryGenericDownload@3
-  inputs:
-    connection: 'ArtSaas'
-    specSource: 'taskConfiguration'
-    threads: 1
-    fileSpec: |
-      {
-        "files": [
-          {
-            "pattern": "Installers/*",
-            "target": "/"
-          }
-        ]
-      }
-    failNoOp: true
-
 - task: ArtifactoryDotnetCore@1
   inputs:
     command: 'restore'
